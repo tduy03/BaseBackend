@@ -1,0 +1,33 @@
+﻿version: '3.8'
+
+services:
+  redis:
+    image: redis:7
+    container_name: vdcd-hotel-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - vdcd-hotel-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16
+    container_name: vdcd-hotel-postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: vdcd_hotel
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - vdcd-hotel-network
+    restart: unless-stopped
+
+networks:
+  vdcd-hotel-network:
+    driver: bridge
+
+volumes:
+  postgres-data:

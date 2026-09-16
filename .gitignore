@@ -1,0 +1,13 @@
+.vs/
+bin/
+obj/
+# App settings (chứa secret)
+# appsettings.json
+# appsettings.*.json
+Uploads/
+storage/
+*.user
+*.pubxml.user
+*.suo
+temp-api-build/
+**/Properties/PublishProfiles/*.pubxml.user
